@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+</head>
+<body>
+<lable for='username'> 用户名: </lable>
+<input type="text" id='username' placeholder='输入用户名'>
+<lable for='password'> 密码: </lable>
+<input type="text" id='password' placeholder='输入用户名'>
+<button id="btn-login">点击登录</button>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js
+"></script>
+<script>
+    $(function(){
+        $('#btn-login').click(function(){
+            const usename = $('#username').val();
+            const password = $('#password').val();
+            $.ajax({
+                url: 'http://localhost:3000/api/login?username=' + username + '&password=' + password,
+                //xxxx?username=admin&password=123456
+                type: 'get',
+                dataType: 'json',
+                success: function(data) {
+                    console.log(data);
+
+                },
+                error:function(xhr,error){
+                    console.error(xhr,error);
+                }
+            })
+        })
+    })
+    </script>
+    </body>
+    </html>
